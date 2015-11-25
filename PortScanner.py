@@ -15,10 +15,10 @@ print ("Please wait, scanning remote host", remoteServerIP)
 print ("Press Ctrl+C to interrupt")
 print ("_" * 60)
 
-t1 =datetime.now
+t1 = datetime.now
 
 try:
-    for port in range(portSelect):
+    for port in range(int(portSelect)):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((remoteServerIP, port))
         if result == 0:
@@ -31,7 +31,7 @@ except KeyboardInterrupt:
 except socket.error:
     sys.exit("Couldn't connect to host")
 
-t2 =datetime.now()
+t2 = datetime.now()
 
 total=t2-t1
 
