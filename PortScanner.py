@@ -6,7 +6,8 @@ from datetime import datetime
 subprocess.call('clear', shell=True)
 
 remoteServer=input("Enter a remote host to scan: ")
-portSelect=input("Enter port range: ")
+portSelect1=input("Enter beginning of port range: ")
+portSelect2=input("Enter end of port range: ")
 remoteServerIP=socket.gethostbyname(remoteServer)
 #portSelect=input("Enter port range: ")
 
@@ -15,10 +16,10 @@ print ("Please wait, scanning remote host", remoteServerIP)
 print ("Press Ctrl+C to interrupt")
 print ("_" * 60)
 
-t1 = datetime.now
+t1 = datetime.now()
 
 try:
-    for port in range(int(portSelect)):
+    for port in range(int(portSelect1),int(portSelect2)):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((remoteServerIP, port))
         if result == 0:
@@ -33,7 +34,7 @@ except socket.error:
 
 t2 = datetime.now()
 
-total=t2-t1
+total = t2-t1
 
 print ('Scanning completed in: ', total)
 
